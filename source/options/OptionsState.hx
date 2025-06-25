@@ -81,6 +81,11 @@ class OptionsState extends MusicBeatState
 		bg.screenCenter();
 		add(bg);
 
+		#if mobile
+		camFollow = new FlxObject(0, 0, 1, 1);
+		add(camFollow);
+		#end
+
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 
@@ -119,6 +124,10 @@ class OptionsState extends MusicBeatState
 		#end
 
 		super.create();
+
+		#if mobile
+		FlxG.camera.follow(camFollow, null, 9);
+		#end
 	}
 
 	override function closeSubState() {
