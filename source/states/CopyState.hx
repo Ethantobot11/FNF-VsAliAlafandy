@@ -80,7 +80,7 @@ class CopyState extends MusicBeatState
 
 		loadingBar = new FlxBar(0, FlxG.height - 26, FlxBarFillDirection.LEFT_TO_RIGHT, FlxG.width, 26);
 		loadingBar.setRange(0, maxLoopTimes);
-		loadingBar.color = 0xFF0000AF
+		loadingBar.color = 0xFF0000AF;
 		add(loadingBar);
 
 		loadedText = new FlxText(loadingBar.x, loadingBar.y + 4, FlxG.width, '', 16);
