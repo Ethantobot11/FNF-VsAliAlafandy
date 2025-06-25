@@ -99,35 +99,35 @@ class ClientPrefs {
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		//Key Bind, Name for ControlsSubState
-		'note_up'		=> [W, UP],
-		'note_left'		=> [A, LEFT],
-		'note_down'		=> [S, DOWN],
-		'note_right'	=> [D, RIGHT],
+		'note_up'		=> [D, UP],
+		'note_left'		=> [F, LEFT],
+		'note_down'		=> [J, DOWN],
+		'note_right'		=> [K, RIGHT],
 		
-		'ui_up'			=> [W, UP],
-		'ui_left'		=> [A, LEFT],
-		'ui_down'		=> [S, DOWN],
-		'ui_right'		=> [D, RIGHT],
+		'ui_up'			=> [D, UP],
+		'ui_left'		=> [F, LEFT],
+		'ui_down'		=> [J, DOWN],
+		'ui_right'		=> [K, RIGHT],
 		
 		'accept'		=> [SPACE, ENTER],
 		'back'			=> [BACKSPACE, ESCAPE],
 		'pause'			=> [ENTER, ESCAPE],
 		'reset'			=> [R],
 		
-		'volume_mute'	=> [ZERO],
+		'volume_mute'		=> [ZERO],
 		'volume_up'		=> [NUMPADPLUS, PLUS],
-		'volume_down'	=> [NUMPADMINUS, MINUS],
+		'volume_down'		=> [NUMPADMINUS, MINUS],
 		
 		'debug_1'		=> [SEVEN],
 		'debug_2'		=> [EIGHT],
 		
-		'fullscreen'	=> [F11]
+		'fullscreen'		=> [F11]
 	];
 	public static var gamepadBinds:Map<String, Array<FlxGamepadInputID>> = [
 		'note_up'		=> [DPAD_UP, Y],
 		'note_left'		=> [DPAD_LEFT, X],
 		'note_down'		=> [DPAD_DOWN, A],
-		'note_right'	=> [DPAD_RIGHT, B],
+		'note_right'		=> [DPAD_RIGHT, B],
 		
 		'ui_up'			=> [DPAD_UP, LEFT_STICK_DIGITAL_UP],
 		'ui_left'		=> [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
@@ -143,7 +143,7 @@ class ClientPrefs {
 		'note_up'		=> [NOTE_UP, UP2],
 		'note_left'		=> [NOTE_LEFT, LEFT2],
 		'note_down'		=> [NOTE_DOWN, DOWN2],
-		'note_right'	=> [NOTE_RIGHT, RIGHT2],
+		'note_right'		=> [NOTE_RIGHT, RIGHT2],
 
 		'ui_up'			=> [UP, NOTE_UP],
 		'ui_left'		=> [LEFT, NOTE_LEFT],
