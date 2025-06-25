@@ -15,9 +15,11 @@ import states.TitleState;
 	public var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
 	public var screensaver:Bool = false;
 	public var wideScreen:Bool = false;
+	
 	#if android
 	public var storageType:String = "EXTERNAL_DATA";
 	#end
+	
 	public var hitboxType:String = "Gradient";
 	public var popUpRating:Bool = true;
 	public var vsync:Bool = false;
@@ -40,6 +42,7 @@ import states.TitleState;
 	public var camZooms:Bool = true;
 	public var hideHud:Bool = false;
 	public var noteOffset:Int = 0;
+	
 	public var arrowRGB:Array<Array<FlxColor>> = [
 		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
 		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
@@ -88,7 +91,7 @@ import states.TitleState;
 	public var goodWindow:Int = 90;
 	public var badWindow:Int = 135;
 	public var safeFrames:Float = 10;
-	public var guitarHeroSustains:Bool = true;
+	public var guitarHeroSustains:Bool = false;
 	public var discordRPC:Bool = true;
 }
 
