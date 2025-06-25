@@ -97,7 +97,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.screenCenter(X);
 		}
 
-		var modVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Vs Ali Alafandy v" + modVersion, 12);
+		var modVer:FlxText = new FlxText(12, FlxG.height - 64, 0, "Vs Ali Alafandy v" + modVersion, 12);
 		modVer.scrollFactor.set();
 		modVer.setFormat("VCR OSD Mono", 16, FlxColor.BLUE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(modVer);
