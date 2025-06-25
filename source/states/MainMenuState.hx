@@ -9,6 +9,8 @@ import options.OptionsState;
 
 class MainMenuState extends MusicBeatState
 {
+
+	public static var modVersion:String = '1.5.0';
 	public static var psychEngineVersion:String = '0.7.3'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
@@ -18,18 +20,15 @@ class MainMenuState extends MusicBeatState
 		'story_mode',
 		'freeplay',
 		
-		#if MODS_ALLOWED
-		'mods',
-		#end
-		
 		#if ACHIEVEMENTS_ALLOWED
 		'awards',
 		#end
-		
+
+		'gallery',
 		'credits',
 		
 		#if !switch
-		'donate',
+		'socials',
 		#end
 		
 		'options'
@@ -74,7 +73,7 @@ class MainMenuState extends MusicBeatState
 		magenta.updateHitbox();
 		magenta.screenCenter();
 		magenta.visible = false;
-		magenta.color = 0xFFfd719b;
+		magenta.color = 0xFF000080;
 		add(magenta);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
@@ -98,13 +97,17 @@ class MainMenuState extends MusicBeatState
 			menuItem.screenCenter(X);
 		}
 
+		var modVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Vs Ali Alafandy v" + modVersion, 12);
+		modVer.scrollFactor.set();
+		modVer.setFormat("VCR OSD Mono", 16, FlxColor.BLUE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(modVer);
 		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		psychVer.scrollFactor.set();
-		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.BLUE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(psychVer);
 		var fnfVer:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		fnfVer.scrollFactor.set();
-		fnfVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		fnfVer.setFormat("VCR OSD Mono", 16, FlxColor.BLUE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(fnfVer);
 		changeItem();
 
@@ -120,7 +123,7 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		#if mobile
-		addTouchPad("UP_DOWN", "A_B_E");
+		addTouchPad("UP_DOWN", "A_B");
 		#end
 
 		super.create();
@@ -157,9 +160,9 @@ class MainMenuState extends MusicBeatState
 			if (controls.ACCEPT)
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
-				if (optionShit[curSelected] == 'donate')
+				if (optionShit[curSelected] == 'socials')
 				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+					CoolUtil.browserLoad('https://linktr.ee/vsalialafandy');
 				}
 				else
 				{
@@ -187,6 +190,8 @@ class MainMenuState extends MusicBeatState
 								MusicBeatState.switchState(new AchievementsMenuState());
 							#end
 
+							case 'gallery':
+								MusicBeatState.switchState(new GalleryState());
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
 							case 'options':
@@ -214,11 +219,6 @@ class MainMenuState extends MusicBeatState
 						});
 					}
 				}
-			}
-			else if (controls.justPressed('debug_1') || touchPad.buttonE.justPressed)
-			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
 			}
 		}
 
