@@ -184,6 +184,11 @@ class OptionsState extends MusicBeatState
 			}
 		}
 		FlxG.sound.play(Paths.sound('scrollMenu'));
+
+		#if mobile
+		camFollow.setPosition(grpOptions.members[curSelected].getGraphicMidpoint().x,
+			grpOptions.members[curSelected].getGraphicMidpoint().y - (grpOptions.length > 4 ? grpOptions.length * 8 : 0));
+		#end
 	}
 
 	override function destroy()
