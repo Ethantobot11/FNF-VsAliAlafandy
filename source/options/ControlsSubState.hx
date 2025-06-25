@@ -56,8 +56,8 @@ class ControlsSubState extends MusicBeatSubstate
 	var grpBinds:FlxTypedGroup<Alphabet>;
 	var selectSpr:AttachedSprite;
 
-	var gamepadColor:FlxColor = 0xfffd7194;
-	var keyboardColor:FlxColor = 0xff7192fd;
+	var gamepadColor:FlxColor = 0xff008080;
+	var keyboardColor:FlxColor = 0xff000080;
 	var onKeyboardMode:Bool = true;
 	
 	var controllerSpr:FlxSprite;
@@ -95,7 +95,7 @@ class ControlsSubState extends MusicBeatSubstate
 		grpBlacks = new FlxTypedGroup<AttachedSprite>();
 		add(grpBlacks);
 		selectSpr = new AttachedSprite();
-		selectSpr.makeGraphic(250, 78, FlxColor.WHITE);
+		selectSpr.makeGraphic(250, 78, FlxColor.BLUE);
 		selectSpr.copyAlpha = false;
 		selectSpr.alpha = 0.75;
 		add(selectSpr);
