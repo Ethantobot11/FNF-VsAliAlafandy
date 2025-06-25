@@ -37,7 +37,7 @@ class Main extends Sprite
 		initialState: TitleState, // initial game state
 		zoom: -1.0, // game state bounds
 		framerate: 60, // default framerate
-		skipSplash: true, // if the default flixel splash screen should be skipped
+		skipSplash: false, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
@@ -54,10 +54,11 @@ class Main extends Sprite
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());
+		
 		#if cpp
-        cpp.NativeGc.enable(true);
-        cpp.NativeGc.run(true);
-        #end
+		cpp.NativeGc.enable(true);
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	public function new()
@@ -125,7 +126,7 @@ class Main extends Sprite
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		addChild(new FlxGame(game.width, game.height, #if COPYSTATE_ALLOWED !CopyState.checkExistingFiles() ? CopyState : #end game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
-		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
+		fpsVar = new FPSCounter(10, 3, 0x0000FF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
