@@ -5,21 +5,21 @@
       "graphic": "x",
       "x": 908,
       "y": 472,
-      "color": "0x99062D"
+      "color": "0x0000FF"
     },
     {
       "button": "buttonC",
       "graphic": "c",
       "x": 908,
       "y": 596,
-      "color": "0x44FF00"
+      "color": "0x00FFFF"
     },
     {
       "button": "buttonY",
       "graphic": "y",
       "x": 1032,
       "y": 472,
-      "color": "0x4A35B9"
+      "color": "0x00FF00"
     },
     {
       "button": "buttonB",
