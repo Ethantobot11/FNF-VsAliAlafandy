@@ -98,7 +98,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 		add(rightArrow);
 
 		positionText = new FlxText(0, FlxG.height, FlxG.width / 4, '');
-		positionText.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, FlxTextAlign.LEFT);
+		positionText.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.BLUE, FlxTextAlign.LEFT);
 		positionText.visible = false;
 
 		positionTextBg = FlxGradient.createGradientFlxSprite(250, 150, [FlxColor.BLACK, FlxColor.BLACK, FlxColor.BLACK, FlxColor.TRANSPARENT], 1, 360);
@@ -138,7 +138,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 			MobileData.forcedMode = null;
 			close();
 		});
-		exit.color = FlxColor.LIME;
+		exit.color = FlxColor.BLUE;
 		exit.setGraphicSize(Std.int(exit.width) * 3);
 		exit.updateHitbox();
 		exit.x = FlxG.width - exit.width - 70;
