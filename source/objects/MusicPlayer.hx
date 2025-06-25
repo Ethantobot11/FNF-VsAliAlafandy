@@ -70,7 +70,7 @@ class MusicPlayer extends FlxGroup
 		}
 
 		progressBar = new FlxBar(timeTxt.x, timeTxt.y + timeTxt.height, LEFT_TO_RIGHT, Std.int(timeTxt.width), 8, null, "", 0, Math.POSITIVE_INFINITY);
-		progressBar.createFilledBar(FlxColor.BLUE, FlxColor.BLACK);
+		progressBar.createFilledBar(FlxColor.BLUE, FlxColor.CYAN);
 		add(progressBar);
 
 		playbackTxt = new FlxText(FlxG.width * 0.6, 20, 0, "", 32);
