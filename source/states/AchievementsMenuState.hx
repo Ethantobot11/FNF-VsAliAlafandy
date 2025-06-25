@@ -309,7 +309,7 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		updateOptions();
 
 		#if mobile
-		addTouchPad("LEFT_RIGHT", "B");
+		addTouchPad("LEFT_RIGHT", "A_B");
 		#end
 	}
 
