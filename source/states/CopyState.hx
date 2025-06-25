@@ -70,7 +70,7 @@ class CopyState extends MusicBeatState
 
 		shouldCopy = true;
 
-		add(new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF0000AF));
+		add(new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF000000));
 
 		loadingImage = new FlxSprite(0, 0, Paths.image('funkay'));
 		loadingImage.setGraphicSize(0, FlxG.height);
@@ -80,6 +80,7 @@ class CopyState extends MusicBeatState
 
 		loadingBar = new FlxBar(0, FlxG.height - 26, FlxBarFillDirection.LEFT_TO_RIGHT, FlxG.width, 26);
 		loadingBar.setRange(0, maxLoopTimes);
+		loadingBar.color = 0xFF0000AF
 		add(loadingBar);
 
 		loadedText = new FlxText(loadingBar.x, loadingBar.y + 4, FlxG.width, '', 16);
