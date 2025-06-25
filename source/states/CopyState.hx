@@ -70,7 +70,7 @@ class CopyState extends MusicBeatState
 
 		shouldCopy = true;
 
-		add(new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d));
+		add(new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF0000AF));
 
 		loadingImage = new FlxSprite(0, 0, Paths.image('funkay'));
 		loadingImage.setGraphicSize(0, FlxG.height);
@@ -83,7 +83,7 @@ class CopyState extends MusicBeatState
 		add(loadingBar);
 
 		loadedText = new FlxText(loadingBar.x, loadingBar.y + 4, FlxG.width, '', 16);
-		loadedText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
+		loadedText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.CYAN, CENTER);
 		add(loadedText);
 
 		var ticks:Int = 15;
