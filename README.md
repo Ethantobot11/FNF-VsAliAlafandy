@@ -2,6 +2,8 @@
 
 This Template for Making any Mods and Engines you want, with Mobile Support.
 
+![special](docs/img/special.png)
+
 ## Customization:
 
 if you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can read over to `Project.xml`
