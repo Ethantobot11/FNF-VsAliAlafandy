@@ -26,12 +26,7 @@
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="DISCORD_ALLOWED" if="desktop" />
 	<define name="COPYSTATE_ALLOWED" if="MODS_ALLOWED mobile"/>
-	<define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
 	<define name="VIDEOS_ALLOWED" if="desktop || mobile" unless="32bits || hl || NOVIDEO || rpi"/> <!-- i'll keep this cuz it makes vscode think i don't use videos -->
-
-	<section if="officialBuild">
-		<define name="TITLE_SCREEN_EASTER_EGG"/>
-	</section>
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
@@ -69,10 +64,6 @@
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/week_assets"   library="week_assets"   rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/week_assets"   library="week_assets"   rename="assets" exclude="*.mp3" unless="web"/>
-	<section if="TITLE_SCREEN_EASTER_EGG">
-		<assets path="assets/secrets" rename="assets/shared" exclude="*.ogg" if="web"/>
-		<assets path="assets/secrets" rename="assets/shared" exclude="*.mp3"  unless="web"/>
-	</section>
 
 	<library name="videos"        preload="true" if="VIDEOS_ALLOWED"/>
 	<library name="songs"         preload="true" />
@@ -161,7 +152,7 @@
 	<haxedef name="SHARE_MOBILE_FILES" if="mobile" />
 
 	<!--Disable deprecated warnings-->
-	<haxedef name='no-deprecation-warnings' />
+	<haxedef name="no-deprecation-warnings" />
 
 	<!--Avoid memory leaks with for loops in HScript-->
 	<haxedef name="loop_unroll_max_cost" value="25" />
@@ -175,10 +166,10 @@
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 
-	<assets path='art/iconOG.png' rename='icon.png' if="linux" />
+	<assets path="art/iconOG.png" rename="icon.png" if="linux" />
 	
-	<icon path="art/icon16.png" size='16'/>
-	<icon path="art/icon32.png" size='32'/>
-	<icon path="art/icon64.png" size='64'/>
+	<icon path="art/icon16.png" size="16"/>
+	<icon path="art/icon32.png" size="32"/>
+	<icon path="art/icon64.png" size="64"/>
 	<icon path="art/iconOG.png" />
 </project>
