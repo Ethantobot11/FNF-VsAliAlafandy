@@ -122,6 +122,8 @@ class WarningState extends MusicBeatState
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
+					var ramGB:Float = Math.round(getSystemRAM() * 100) / 100;
+
 					if (ramGB < 3.49)
 					{
 						#if mobile
@@ -154,6 +156,8 @@ class WarningState extends MusicBeatState
 					}
 				} else {
 					FlxG.sound.play(Paths.sound('cancelMenu'));
+
+					var ramGB:Float = Math.round(getSystemRAM() * 100) / 100;
 
 					if (ramGB < 3.49)
 					{
@@ -219,5 +223,6 @@ class WarningState extends MusicBeatState
 	return 0;
 	}
 }
+
 
 
