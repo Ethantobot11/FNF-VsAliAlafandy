@@ -122,73 +122,59 @@ class WarningState extends MusicBeatState
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					var ramGB:Float = Math.round(getSystemRAM() * 100) / 100;
+					#if mobile
+					FlxFlicker.flicker(warnMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
+						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+							MusicBeatState.switchState(new TitleState());
+						});
+					});
 
-					if (ramGB < 3.49)
-					{
-						#if mobile
-						FlxFlicker.flicker(warnMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
-							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-								MusicBeatState.switchState(new TitleState());
-							});
+					FlxFlicker.flicker(guhMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
+						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+							MusicBeatState.switchState(new TitleState());
 						});
-						#else
-						FlxFlicker.flicker(warn, 1, 0.1, false, true, function(flk:FlxFlicker) {
-							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-								MusicBeatState.switchState(new TitleState());
-							});
+					});
+					#else
+					FlxFlicker.flicker(warn, 1, 0.1, false, true, function(flk:FlxFlicker) {
+						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+							MusicBeatState.switchState(new TitleState());
 						});
-						#end
-					} else {
-						#if mobile
-						FlxFlicker.flicker(guhMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
-							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-								MusicBeatState.switchState(new TitleState());
-							});
+					});
+					
+					FlxFlicker.flicker(guh, 1, 0.1, false, true, function(flk:FlxFlicker) {
+						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+							MusicBeatState.switchState(new TitleState());
 						});
-						#else
-						FlxFlicker.flicker(guh, 1, 0.1, false, true, function(flk:FlxFlicker) {
-							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-								MusicBeatState.switchState(new TitleState());
-							});
-						});
-						#end
-					}
+					});
+					#end
 				} else {
 					FlxG.sound.play(Paths.sound('cancelMenu'));
 
-					var ramGB:Float = Math.round(getSystemRAM() * 100) / 100;
+					#if mobile
+					FlxTween.tween(warnMobile, {alpha: 0}, 1, {
+						onComplete: function (twn:FlxTween) {
+							MusicBeatState.switchState(new TitleState());
+						}
+					});
 
-					if (ramGB < 3.49)
-					{
-						#if mobile
-						FlxTween.tween(warnMobile, {alpha: 0}, 1, {
-							onComplete: function (twn:FlxTween) {
-								MusicBeatState.switchState(new TitleState());
-							}
-						});
-						#else
-						FlxTween.tween(warn, {alpha: 0}, 1, {
-							onComplete: function (twn:FlxTween) {
-								MusicBeatState.switchState(new TitleState());
-							}
-						});
-						#end
-					} else {
-						#if mobile
-						FlxTween.tween(guhMobile, {alpha: 0}, 1, {
-							onComplete: function (twn:FlxTween) {
-								MusicBeatState.switchState(new TitleState());
-							}
-						});
-						#else
-						FlxTween.tween(guh, {alpha: 0}, 1, {
-							onComplete: function (twn:FlxTween) {
-								MusicBeatState.switchState(new TitleState());
-							}
-						});
-						#end
-					}
+					FlxTween.tween(guhMobile, {alpha: 0}, 1, {
+						onComplete: function (twn:FlxTween) {
+							MusicBeatState.switchState(new TitleState());
+						}
+					});
+					#else
+					FlxTween.tween(warn, {alpha: 0}, 1, {
+						onComplete: function (twn:FlxTween) {
+							MusicBeatState.switchState(new TitleState());
+						}
+					});
+						
+					FlxTween.tween(guh, {alpha: 0}, 1, {
+						onComplete: function (twn:FlxTween) {
+							MusicBeatState.switchState(new TitleState());
+						}
+					});
+					#end
 				}
 			}
 		}
@@ -223,6 +209,7 @@ class WarningState extends MusicBeatState
 	return 0;
 	}
 }
+
 
 
 
