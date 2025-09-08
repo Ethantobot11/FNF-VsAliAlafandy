@@ -16,8 +16,11 @@ class WarningState extends MusicBeatState
 
 	var bg:FlxSprite;
 
+	#if mobile
 	var warnTextMobile:FlxText;
+	#else
 	var warnText:FlxText;
+	#end
 	
 	override function create()
 	{
@@ -38,6 +41,7 @@ class WarningState extends MusicBeatState
 		
 		var ramGB:Float = Math.round(getSystemRAM() * 100) / 100;
 
+		#if mobile
 		var warnMobile:String = "Hey, yoo!!\n" +
 			"This Mod needs at least 4 GB of RAM to run nicely.\n" +
 			"System Detected RAM: " + ramGB + " GB.\n" +
@@ -46,7 +50,13 @@ class WarningState extends MusicBeatState
 			"Press A to continue and disable them now or go to Options Menu.\n" +
 			"Press B to ignore this massage.\n" +
 			"You've been warned!";
-		
+
+		var guhMobile:String = "Hey, yoo!!\n
+			This Mod contains some flashing lights!\n
+			Press A to continue and disable them now or go to Options Menu.\n
+			Press B to ignore this massage.\n
+			You've been warned!";
+		#else
 		var warn:String = "Hey, yoo!!\n" +
 			"This Mod needs at least 4 GB of RAM to run nicely.\n" +
 			"System Detected RAM: " + ramGB + " GB.\n" +
@@ -56,17 +66,12 @@ class WarningState extends MusicBeatState
 			"Press ESCAPE to ignore this massage.\n" +
 			"You've been warned!";
 
-		var guhMobile:String = "Hey, yoo!!\n
-			This Mod contains some flashing lights!\n
-			Press A to continue and disable them now or go to Options Menu.\n
-			Press B to ignore this massage.\n
-			You've been warned!";
-
 		var guh:String = "Hey, yoo!!\n
 			This Mod contains some flashing lights!\n
 			Press ENTER to continue and disable them now or go to Options Menu.\n
 			Press ESCAPE to ignore this massage.\n
 			You've been warned!";
+		#end
 		
 		if (ramGB < 3.49)
 		{
@@ -116,18 +121,70 @@ class WarningState extends MusicBeatState
 					ClientPrefs.data.flashing = false;
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
-					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
-						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-							MusicBeatState.switchState(new TitleState());
+
+					if (ramGB < 3.49)
+					{
+						#if mobile
+						FlxFlicker.flicker(warnMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
+							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+								MusicBeatState.switchState(new TitleState());
+							});
 						});
-					});
+						#else
+						FlxFlicker.flicker(warn, 1, 0.1, false, true, function(flk:FlxFlicker) {
+							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+								MusicBeatState.switchState(new TitleState());
+							});
+						});
+						#end
+					} else {
+						#if mobile
+						FlxFlicker.flicker(guhMobile, 1, 0.1, false, true, function(flk:FlxFlicker) {
+							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+								MusicBeatState.switchState(new TitleState());
+							});
+						});
+						#else
+						FlxFlicker.flicker(guh, 1, 0.1, false, true, function(flk:FlxFlicker) {
+							new FlxTimer().start(0.5, function (tmr:FlxTimer) {
+								MusicBeatState.switchState(new TitleState());
+							});
+						});
+						#end
+					}
 				} else {
 					FlxG.sound.play(Paths.sound('cancelMenu'));
-					FlxTween.tween(warnText, {alpha: 0}, 1, {
-						onComplete: function (twn:FlxTween) {
-							MusicBeatState.switchState(new TitleState());
-						}
-					});
+
+					if (ramGB < 3.49)
+					{
+						#if mobile
+						FlxTween.tween(warnMobile, {alpha: 0}, 1, {
+							onComplete: function (twn:FlxTween) {
+								MusicBeatState.switchState(new TitleState());
+							}
+						});
+						#else
+						FlxTween.tween(warn, {alpha: 0}, 1, {
+							onComplete: function (twn:FlxTween) {
+								MusicBeatState.switchState(new TitleState());
+							}
+						});
+						#end
+					} else {
+						#if mobile
+						FlxTween.tween(guhMobile, {alpha: 0}, 1, {
+							onComplete: function (twn:FlxTween) {
+								MusicBeatState.switchState(new TitleState());
+							}
+						});
+						#else
+						FlxTween.tween(guh, {alpha: 0}, 1, {
+							onComplete: function (twn:FlxTween) {
+								MusicBeatState.switchState(new TitleState());
+							}
+						});
+						#end
+					}
 				}
 			}
 		}
@@ -162,4 +219,5 @@ class WarningState extends MusicBeatState
 	return 0;
 	}
 }
+
 
