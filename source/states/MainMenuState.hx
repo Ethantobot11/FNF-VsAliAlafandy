@@ -11,7 +11,7 @@ class MainMenuState extends MusicBeatState
 {
 
 	public static var modVersion:String = '1.5.0';
-	public static var psychEngineVersion:String = '0.7.3'; // This is also used for Discord RPC
+	public static var psychEngineVersion:String = '6.9.9'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -36,6 +36,8 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+
+	var char6:FlxSprite;
 
 	override function create()
 	{
@@ -95,8 +97,18 @@ class MainMenuState extends MusicBeatState
 			menuItem.scrollFactor.set(0, scr);
 			menuItem.updateHitbox();
 			// menuItem.screenCenter(X);
-			menuItem.x = 100;
+			menuItem.x = 95;
 		}
+
+		char6 = new FlxSprite(415, 500);
+		char6.antialiasing = ClientPrefs.data.antialiasing;
+		char6.frames = Paths.getSparrowAtlas('mainmenu/menu_characters/options_thinking');
+		char6.animation.addByPrefix('menu', "Menu", 24);
+		char6.animation.play('menu');
+		char6.updateHitbox();
+		char6.visible = false;
+		// char6.setGraphicSize(Std.int(char6.width * 1));
+		add(char6);
 
 		var modVer:FlxText = new FlxText(12, FlxG.height - 64, 0, "Vs Ali Alafandy v" + modVersion, 12);
 		modVer.scrollFactor.set();
@@ -141,6 +153,15 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * elapsed;
 			if (FreeplayState.vocals != null)
 				FreeplayState.vocals.volume += 0.5 * elapsed;
+		}
+
+		if (optionShit[curSelected] == 'options')
+		{
+			char6.visible = true;
+		}
+		else
+		{
+			char6.visible = false;
 		}
 
 		if (!selectedSomethin)
