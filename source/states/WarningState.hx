@@ -185,8 +185,3 @@ class WarningState extends MusicBeatState
 	return 0;
 	}
 }
-
-
-
-
-
