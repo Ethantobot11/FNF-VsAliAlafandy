@@ -118,9 +118,9 @@ class FreeplayState extends MusicBeatState
 			iconArray.push(icon);
 			add(icon);
 
-			// songText.x += 40;
+			songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
+			songText.screenCenter(X);
 		}
 		WeekData.setDirectoryFromWeek();
 
