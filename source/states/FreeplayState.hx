@@ -99,7 +99,7 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			// var songText:Alphabet = new Alphabet(40, 320, songs[i].songName, true);
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
 			songText.targetY = i;
 			grpSongs.add(songText);
 
@@ -113,7 +113,7 @@ class FreeplayState extends MusicBeatState
 			
 			// too laggy with a lot of songs, so i had to recode the logic for it
 			songText.visible = songText.active = songText.isMenuItem = true;
-			icon.visible = icon.active = true;
+			icon.visible = icon.active = false;
 
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
