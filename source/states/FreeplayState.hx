@@ -98,34 +98,22 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, songs[i].isSelectable, false);
-			songText.isMenuItem = true;
-			if(songs[i].isSelectable) {
-				songText.isMenuItemCentered = true;
-			} else {
-				songText.screenCenter(X);
-				songText.forceX = songText.x + 40;
-				songText.yAdd -= 70;
-			}
+			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(0, 0, songs[i].songName, true);
 			songText.targetY = i;
+			optionText.y += (100 * (i - (songs.length / 2))) + 50;
 			grpSongs.add(songText);
 
-			if (songText.width > 980 && songs[i].isSelectable)
-			{
-				var textScale:Float = 980 / songText.width;
-				songText.scale.x = textScale;
-				for (letter in songText.lettersArray)
-				{
-					letter.x *= textScale;
-					letter.offset.x *= textScale;
-				}
-				//songText.updateHitbox();
-				//trace(songs[i].songName + ' new scale: ' + textScale);
-			}
+			songText.scaleX = Math.min(1, 980 / songText.width);
+			songText.snapToPosition();
 
-			Paths.currentModDirectory = songs[i].folder;
+			Mods.currentModDirectory = songs[i].folder;
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 			icon.sprTracker = songText;
+
+			// too laggy with a lot of songs, so i had to recode the logic for it
+			songText.visible = songText.active = songText.isMenuItem = true;
+			icon.visible = icon.active = false;
 
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
@@ -133,7 +121,7 @@ class FreeplayState extends MusicBeatState
 
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
+			songText.screenCenter(X);
 		}
 		WeekData.setDirectoryFromWeek();
 
@@ -149,7 +137,6 @@ class FreeplayState extends MusicBeatState
 		add(diffText);
 
 		add(scoreText);
-
 
 		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		missingTextBG.alpha = 0.6;
