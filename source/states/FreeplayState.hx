@@ -99,20 +99,21 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
-			var songText:Alphabet = new Alphabet(0, 0, songs[i].songName, true);
+			var isSelectable:Bool = !unselectableCheck(i);
+			var songText:Alphabet = new Alphabet(FlxG.width / 2, 300, song[i][0], !isSelectable);
+
+			songText.isMenuItem = true;
 			songText.targetY = i;
-			songText.y += (100 * (i - (songs.length / 2))) + 50;
-			grpSongs.add(songText);
-
-			songText.scaleX = Math.min(1, 980 / songText.width);
+			songText.changeX = false;
 			songText.snapToPosition();
-
+			grpSongs.add(songText);
+			
 			Mods.currentModDirectory = songs[i].folder;
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 			icon.sprTracker = songText;
 
 			// too laggy with a lot of songs, so i had to recode the logic for it
-			songText.visible = songText.active = songText.isMenuItem = true;
+			songText.visible = songText.active = songText.isMenuItem = false;
 			icon.visible = icon.active = false;
 
 			// using a FlxGroup is too much fuss!
@@ -121,7 +122,7 @@ class FreeplayState extends MusicBeatState
 
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			songText.screenCenter(X);
+			// songText.screenCenter(X);
 		}
 		WeekData.setDirectoryFromWeek();
 
