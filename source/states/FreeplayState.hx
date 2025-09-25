@@ -99,12 +99,13 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
-			var songText:Alphabet = new Alphabet(FlxG.width / 2, 300, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(0, 0, songs[i].songName, true);
 
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			songText.changeX = false;
 			songText.snapToPosition();
+			songText.screenCenter();
 			grpSongs.add(songText);
 			
 			Mods.currentModDirectory = songs[i].folder;
