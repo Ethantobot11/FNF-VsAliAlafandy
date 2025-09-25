@@ -218,6 +218,11 @@ class AchievementsMenuState extends MusicBeatState
 				removeTouchPad();
 				openSubState(new ResetAchievementSubstate());
 			}
+			#else
+			if(controls.RESET && (options[curSelected].unlocked || options[curSelected].curProgress > 0))
+			{
+				openSubState(new ResetAchievementSubstate());
+			}
 			#end
 		}
 
