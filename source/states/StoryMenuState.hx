@@ -243,6 +243,7 @@ class StoryMenuState extends MusicBeatState
 			else if (upP || downP)
 				changeDifficulty();
 
+			#if mobile
 			if(FlxG.keys.justPressed.CONTROL || touchPad.buttonX.justPressed)
 			{
 				persistentUpdate = false;
@@ -260,6 +261,23 @@ class StoryMenuState extends MusicBeatState
 			{
 				selectWeek();
 			}
+			#else
+			if(FlxG.keys.justPressed.CONTROL)
+			{
+				persistentUpdate = false;
+				openSubState(new GameplayChangersSubstate());
+			}
+			else if(controls.RESET)
+			{
+				persistentUpdate = false;
+				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
+				//FlxG.sound.play(Paths.sound('scrollMenu'));
+			}
+			else if (controls.ACCEPT)
+			{
+				selectWeek();
+			}
+			#end
 		}
 
 		if (controls.BACK && !movedBack && !selectedWeek)
