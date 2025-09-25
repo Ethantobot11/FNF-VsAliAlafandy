@@ -211,12 +211,14 @@ class AchievementsMenuState extends MusicBeatState
 					_changeSelection();
 				}
 			}
-			
+
+			#if mobile
 			if(MusicBeatState.getState().touchPad.buttonC.justPressed || controls.RESET && (options[curSelected].unlocked || options[curSelected].curProgress > 0))
 			{
 				removeTouchPad();
 				openSubState(new ResetAchievementSubstate());
 			}
+			#end
 		}
 
 		if (controls.BACK) {
