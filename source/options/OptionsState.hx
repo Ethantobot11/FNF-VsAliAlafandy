@@ -151,11 +151,13 @@ class OptionsState extends MusicBeatState
 			changeSelection(1);
 		}
 
+		#if mobile
 		if (touchPad.buttonC.justPressed || FlxG.keys.justPressed.CONTROL && controls.mobileC)
 		{
 			persistentUpdate = false;
 			openSubState(new MobileControlSelectSubState());
 		}
+		#end
 
 		if (controls.BACK) {
             		exiting = true;
