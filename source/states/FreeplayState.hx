@@ -99,8 +99,7 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
-			var isSelectable:Bool = !unselectableCheck(i);
-			var songText:Alphabet = new Alphabet(FlxG.width / 2, 300, song[i][0], !isSelectable);
+			var songText:Alphabet = new Alphabet(FlxG.width / 2, 300, song[i].songName, true);
 
 			songText.isMenuItem = true;
 			songText.targetY = i;
