@@ -100,12 +100,12 @@ class FreeplayState extends MusicBeatState
 		{
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			var songText:Alphabet = new Alphabet(0, 0, songs[i].songName, true);
-
 			songText.isMenuItem = true;
 			songText.targetY = i;
-			songText.changeX = false;
+			songText.changeX = true;
 			songText.snapToPosition();
-			songText.screenCenter();
+			songText.screenCenter(X);
+			songText.screenCenter(Y);
 			grpSongs.add(songText);
 			
 			Mods.currentModDirectory = songs[i].folder;
@@ -161,13 +161,14 @@ class FreeplayState extends MusicBeatState
 		bottomBG.alpha = 0.6;
 		add(bottomBG);
 
-                var leText:String;
+        var leText:String;
 
-                if (controls.mobileC) {
+        if (controls.mobileC) {
 		leText = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
                 } else {
 		leText = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
-                }
+        }
+		
 		bottomString = leText;
 		var size:Int = 16;
 		bottomText = new FlxText(bottomBG.x, bottomBG.y + 4, FlxG.width, leText, size);
