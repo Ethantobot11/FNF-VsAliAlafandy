@@ -100,7 +100,7 @@ class FreeplayState extends MusicBeatState
 		{
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true);
-			songText.alignment("centered");
+			songText.alignment = CENTERED;
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
