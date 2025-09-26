@@ -1,4 +1,4 @@
-package states;
+package origin states;
 
 import backend.WeekData;
 import backend.Highscore;
@@ -101,10 +101,10 @@ class FreeplayState extends MusicBeatState
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			var songText:Alphabet = new Alphabet(620, 320, songs[i].songName, true);
 			songText.alignment = CENTERED;
-			// songText.targetY = i;
+			songText.targetY = i;
 			grpSongs.add(songText);
 
-			songText.scaleX = Math.min(1, 980 / songText.width);
+			// songText.scaleX = Math.min(1, 980 / songText.width);
 			songText.snapToPosition();
 			
 			Mods.currentModDirectory = songs[i].folder;
