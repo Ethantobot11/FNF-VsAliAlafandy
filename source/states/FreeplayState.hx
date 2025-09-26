@@ -128,8 +128,6 @@ class FreeplayState extends MusicBeatState
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
-
-			if(curSelected == -1) curSelected = i;
 		}
 		WeekData.setDirectoryFromWeek();
 
@@ -530,7 +528,7 @@ class FreeplayState extends MusicBeatState
 			
 			item.alpha = 0.6;
 			
-			if (item.targetY == 0)
+			if (item.targetY == 0 || curSelected)
 				item.alpha = 1;
 		}
 		
