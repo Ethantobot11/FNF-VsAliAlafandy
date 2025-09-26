@@ -101,8 +101,7 @@ class FreeplayState extends MusicBeatState
 			// default songText
 			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			
-			// var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, true);
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, true);
 			songText.isMenuItem = false;
 			songText.isMenuItemCenter = true;
 			songText.targetY = i;
@@ -172,9 +171,9 @@ class FreeplayState extends MusicBeatState
         var leText:String;
 
         if (controls.mobileC) {
-		leText = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
-                } else {
-		leText = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+			leText = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
+        } else {
+			leText = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
         }
 		
 		bottomString = leText;
