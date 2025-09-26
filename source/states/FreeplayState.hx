@@ -1,4 +1,4 @@
-package origin states;
+package states;
 
 import backend.WeekData;
 import backend.Highscore;
