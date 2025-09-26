@@ -272,14 +272,12 @@ class FreeplayState extends MusicBeatState
 				}
 				if (controls.UI_UP_P)
 				{
-					// changeSelection(-shiftMult);
-					changeSelection(-1);
+					changeSelection(-shiftMult);
 					holdTime = 0;
 				}
 				if (controls.UI_DOWN_P)
 				{
-					// changeSelection(shiftMult);
-					changeSelection(1);
+					changeSelection(shiftMult);
 					holdTime = 0;
 				}
 
@@ -527,9 +525,12 @@ class FreeplayState extends MusicBeatState
 
 		for (item in grpSongs.members)
 		{
+			item.targetY = bullShit - curSelected;
 			bullShit++;
+			
 			item.alpha = 0.6;
-			if (item.targetY == curSelected)
+			
+			if (item.targetY == 0)
 				item.alpha = 1;
 		}
 		
