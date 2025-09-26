@@ -272,12 +272,14 @@ class FreeplayState extends MusicBeatState
 				}
 				if (controls.UI_UP_P)
 				{
-					changeSelection(-shiftMult);
+					// changeSelection(-shiftMult);
+					changeSelection(-1);
 					holdTime = 0;
 				}
 				if (controls.UI_DOWN_P)
 				{
-					changeSelection(shiftMult);
+					// changeSelection(shiftMult);
+					changeSelection(1);
 					holdTime = 0;
 				}
 
