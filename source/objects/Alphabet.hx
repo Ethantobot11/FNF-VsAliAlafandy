@@ -169,11 +169,31 @@ class Alphabet extends FlxSpriteGroup
 	{
 		if (isMenuItem)
 		{
-			var lerpVal:Float = Math.exp(-elapsed * 9.6);
+			var lerpVal:Float = FlxMath.bound(elapsed * 9.6, 0, 1);
 			if(changeX)
-				x = FlxMath.lerp((targetY * distancePerItem.x) + startPosition.x, x, lerpVal);
+				x = FlxMath.lerp(x, (targetY * distancePerItem.x) + startPosition.x, lerpVal);
 			if(changeY)
-				y = FlxMath.lerp((targetY * 1.3 * distancePerItem.y) + startPosition.y, y, lerpVal);
+				y = FlxMath.lerp(y, (targetY * 1.3 * distancePerItem.y) + startPosition.y, lerpVal);
+		}
+		
+		if (isMenuItemCenter)
+		{
+			var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.3);
+			var yTarget = (scaledY * yMult) + (FlxG.height * 0.48) + yAdd;
+			
+			if (Math.abs(y - yTarget) > 0.1)
+			{
+				y = FlxMath.lerp(y, yTarget, 0.1);
+			} else {
+				y = yTarget;
+			}
+			
+			if(forceX != Math.NEGATIVE_INFINITY)
+			{
+				screenCenter(X);
+			} else {
+				screenCenter(X);
+			}
 		}
 		super.update(elapsed);
 	}
