@@ -201,9 +201,7 @@ class Alphabet extends FlxSpriteGroup
 		if (isMenuItem)
 		{
 			var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.3);
-			
-			// var lerpVal:Float = CoolUtil.boundTo(elapsed * 9.6, 0, 1);
-			var lerpVal:Float = Math.exp(-elapsed * 9.6);
+			var lerpVal:Float = boundTo(elapsed * 9.6, 0, 1);
 			
 			y = FlxMath.lerp(y, (scaledY * yMult) + (FlxG.height * 0.48) + yAdd, lerpVal);
 			
@@ -530,3 +528,11 @@ class AlphaCharacter extends FlxSprite
 		updateLetterOffset();
 	}
 }
+
+function boundTo(value:Float, min:Float, max:Float):Float {
+	var newValue:Float = value;
+	if(newValue < min) newValue = min;
+	else if(newValue > max) newValue = max;
+	return newValue;
+}
+
