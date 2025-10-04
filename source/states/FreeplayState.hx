@@ -521,6 +521,7 @@ class FreeplayState extends MusicBeatState
 
 		iconArray[curSelected].alpha = 1;
 
+		/*
 		for (item in grpSongs.members)
 		{
 			item.targetY = bullShit - curSelected;
@@ -530,6 +531,19 @@ class FreeplayState extends MusicBeatState
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
 			if (item.targetY == 0)
+				item.alpha = 1;
+				// item.setGraphicSize(Std.int(item.width));
+		}
+		*/
+
+		for (item in grpSongs.members)
+		{
+			bullShit++;
+			
+			item.alpha = 0.6;
+			// item.setGraphicSize(Std.int(item.width * 0.8));
+			
+			if (item.targetY == curSelected)
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
 		}
