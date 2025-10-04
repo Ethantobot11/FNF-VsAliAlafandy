@@ -157,17 +157,13 @@ class GalleryImage extends FlxSprite {
 	
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-
-		//x = FlxMath.lerp(x, (FlxG.width - width) / 2 + posX * 760, boundTo(elapsed * lerpSpeed, 0, 1));
-		x = FlxMath.lerp(x, (FlxG.width - width) / 2 + posX * 760, Math.exp(-elapsed * lerpSpeed));
+		x = FlxMath.lerp(x, (FlxG.width - width) / 2 + posX * 760, boundTo(elapsed * lerpSpeed, 0, 1));
 	}
 }
 
-/*
 function boundTo(value:Float, min:Float, max:Float):Float {
 	var newValue:Float = value;
 	if(newValue < min) newValue = min;
 	else if(newValue > max) newValue = max;
 	return newValue;
 }
-*/
