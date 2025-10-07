@@ -104,7 +104,7 @@ class FreeplayState extends MusicBeatState
 			var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, false);
 			songText.isMenuItem = true;
 			
-			if(songs[i].songName)
+			if(songs[i].songName, true)
 			{
 				songText.isMenuItemCentered = true;
 			} else {
