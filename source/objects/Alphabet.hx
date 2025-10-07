@@ -41,20 +41,6 @@ class Alphabet extends FlxSpriteGroup
 		this.startPosition.y = y;
 		this.bold = bold;
 		this.text = text;
-
-		if (text != "")
-		{
-			if (typed)
-			{
-				startTypedText(typingSpeed);
-			}
-			else
-			{
-				addText();
-			}
-		} else {
-			finishedText = true;
-		}
 	}
 
 	public function setAlignmentFromString(align:String)
