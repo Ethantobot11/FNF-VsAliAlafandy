@@ -20,7 +20,7 @@ on:
         type: string
 
 env:
-  HAXE_VERSION: 4.3.2
+  HAXE_VERSION: 4.3.7
   PROJECT_NAME: VsAliAlafandy
 
 jobs:
@@ -64,12 +64,6 @@ jobs:
       - name: Install libVLC
         if: inputs.name == 'Linux'
         run: sudo apt install libvlc-dev libvlccore-dev
-
-      - name: Setup XCode
-        if: inputs.name == 'iOS'
-        uses: maxim-lobanov/setup-xcode@master
-        with:
-          xcode-version: '16.4'
 
       - name: Install Libraries
         run: |
