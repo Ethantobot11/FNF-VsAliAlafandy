@@ -106,11 +106,11 @@ class FreeplayState extends MusicBeatState
 			
 			if(songs[i].songName, true);
 			{
-				songText.isMenuItemCentered = true;
+				(songText.isMenuItemCentered = true);
 			} else {
-				songText.screenCenter(X);
-				songText.forceX = songText.x + 40;
-				songText.yAdd -= 70;
+				(songText.screenCenter(X));
+				(songText.forceX = songText.x + 40);
+				(songText.yAdd -= 70);
 			}
 			
 			songText.targetY = i;
