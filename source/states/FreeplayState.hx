@@ -96,21 +96,22 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		for (i in 0...songs.length)
-        {
-            var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, false);
-            songText.isMenuItem = true;
-
-        if (true)
-        {
-            songText.isMenuItemCentered = true;
-        }
-        else
-        {
-            songText.screenCenter(X);
-            songText.forceX = songText.x + 40;
-            songText.yAdd -= 70;
-        }
+        for (i in 0...songs.length)
+		{
+			// default songText
+			// var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
+			
+			var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, false);
+			songText.isMenuItem = true;
+			
+			if(false)
+			{
+				songText.isMenuItemCentered = true;
+			} else {
+				songText.screenCenter(X);
+				songText.forceX = songText.x + 40;
+				songText.yAdd -= 70;
+			}
 			
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -138,9 +139,7 @@ class FreeplayState extends MusicBeatState
 			// songText.screenCenter(X);
 		}
 		WeekData.setDirectoryFromWeek();
-}
-}
-
+		
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.BLUE, RIGHT);
 
