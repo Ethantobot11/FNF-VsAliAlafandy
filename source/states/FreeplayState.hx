@@ -96,10 +96,21 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-		songText.isMenuItemCentered = true;
-		songText.screenCenter(X);
-	    songText.forceX = songText.x + 40;
-	    songText.yAdd -= 70;
+		for (i in 0...songs.length)
+        {
+            var songText:Alphabet = new Alphabet(0, 320, songs[i].songName, false);
+            songText.isMenuItem = true;
+
+        if (true)
+        {
+            songText.isMenuItemCentered = true;
+        }
+        else
+        {
+            songText.screenCenter(X);
+            songText.forceX = songText.x + 40;
+            songText.yAdd -= 70;
+        }
 			
 			songText.targetY = i;
 			grpSongs.add(songText);
