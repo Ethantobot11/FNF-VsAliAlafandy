@@ -5,12 +5,12 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/AliAlafandy/lime"
+      "url": "https://github.com/kittycathy233/lime"
     },
     {
       "name": "openfl",
       "type": "haxelib",
-      "version": "9.3.2"
+      "version": "9.4.2"
     },
     {
       "name": "flixel",
@@ -39,14 +39,12 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/AliAlafandy/hxcpp"
+      "url": "https://github.com/kittycathy233/hxcpp"
     },
     {
-      "name": "hxCodec",
-      "type": "git",
-      "dir": null,
-      "ref": "cafc58e9046505ff93fa659339808b53faa5d6f3",
-      "url": "https://github.com/polybiusproxy/hxCodec"
+      "name": "hxvlc",
+      "type": "haxelib",
+      "dir": "2.0.1"
     },
     {
       "name": "SScript",
@@ -70,7 +68,7 @@
       "type": "git",
       "dir": null,
       "ref": "master",
-      "url": "https://github.com/AliAlafandy/linc_luajit"
+      "url": "https://github.com/kittycathy233/linc_luajit"
     },
     {
       "name": "flxanimate",
