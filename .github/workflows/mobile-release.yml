@@ -49,7 +49,7 @@ jobs:
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
-           name: iOSBuild
+           name: iOS
            path: ${{ github.workspace }}
 
       - name: Move iOS File
