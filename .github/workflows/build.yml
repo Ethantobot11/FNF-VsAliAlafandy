@@ -19,6 +19,8 @@ on:
         required: true
         type: string
 
+permissions: write-all
+
 env:
   HAXE_VERSION: 4.3.7
   PROJECT_NAME: VsAliAlafandy
