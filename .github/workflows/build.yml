@@ -139,8 +139,6 @@ jobs:
         if: inputs.name == 'iOS'
         run: |
           cd export/release/ios/build/Release-iphoneos/VsAliAlafandy.app
-          ldid -S../../../VsAliAlafandy/VsAliAlafandy.entitlements VsAliAlafandy
-          cd ..
           mkdir Payload 
           mv VsAliAlafandy.app Payload
           zip -r ${{ env.PROJECT_NAME }}.ipa Payload
