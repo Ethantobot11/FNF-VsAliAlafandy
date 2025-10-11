@@ -18,7 +18,7 @@ jobs:
             os: windows-2022
             buildArgs: "windows -final d officialBuild"
             artifactName: Windows
-            artifactPath: export\release\windows\bin\*
+            artifactPath: export\release\windows\bin\*.exe
           - name: Android
             os: macos-15
             buildArgs: "android -final -D officialBuild"
@@ -51,6 +51,15 @@ jobs:
       - name: Move Android File
         run: mv /home/runner/${{ env.PROJECT_NAME }}-release.apk /home/runner/${{ env.PROJECT_NAME }}-Android.apk
 
+      - name: Download Windows Build
+        uses: actions/download-artifact@main
+        with:
+           name: windowsBuild
+           path: /home/runner
+           
+      - name: Move Android File
+        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.exe /home/runner/${{ env.PROJECT_NAME }}-Windows.exe
+
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
@@ -69,3 +78,4 @@ jobs:
           files: |
             /home/runner/*.apk
             /home/runner/*.ipa
+            /home/runner/*.exe
