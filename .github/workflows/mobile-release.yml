@@ -16,7 +16,7 @@ jobs:
         include:
           - name: Windows
             os: windows-2022
-            buildArgs: windows -final d officialBuild
+            buildArgs: "windows -final -D officialBuild"
             artifactName: Windows
             artifactPath: export\release\windows\bin\*.exe
           - name: Android
