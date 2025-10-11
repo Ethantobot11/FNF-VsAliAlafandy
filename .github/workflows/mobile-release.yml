@@ -72,7 +72,7 @@ jobs:
            name: Windows
            
       - name: zip Windows File
-        run: zip -r /home/runner/${{ env.PROJECT_NAME }}-release.zip /home/runner/${{ env.PROJECT_NAME }}-Windows.zip
+        run: zip -r /home/runner/Windows.zip /home/runner/-Windows.zip
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
@@ -85,13 +85,13 @@ jobs:
         with:
            name: MacOS
       - name: Move Mac File
-        run: zip -r ${{ github.workspace }}/${{ env.PROJECT_NAME }}.zip /home/runner/${{ env.PROJECT_NAME }}.zip
+        run: zip -r ${{ github.workspace }}/MacOS.zip /home/runner/MacOS.zip
       - name: Download Linux Build
         uses: actions/download-artifact@main
         with:
            name: Linux
       - name: zip Linux File
-        run: zip -r ${{ github.workspace }}/${{ env.PROJECT_NAME }}.zip /home/runner/${{ env.PROJECT_NAME }}.zip
+        run: zip -r ${{ github.workspace }}/Linux.zip /home/runner/Linux.zip
 
       
       - name: Publish The Release
@@ -103,5 +103,6 @@ jobs:
           files: |
             /home/runner/*.apk
             /home/runner/*.ipa
-            /home/runner/*.exe
-            /home/runner/*.app
+            /home/runner/Linux.zip
+            /home/runner/Windows.zip
+            /home/runner/MacOS.zip
