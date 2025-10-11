@@ -18,7 +18,7 @@ jobs:
             os: windows-2022
             buildArgs: "windows -final -D officialBuild"
             artifactName: Windows
-            artifactPath: export\release\windows\bin\*.exe
+            artifactPath: export\release\windows\bin\*
           - name: Linux
             os: ubuntu-22.04
             buildArgs: "linux -final -D officialBuild"
@@ -70,27 +70,30 @@ jobs:
         uses: actions/download-artifact@main
         with:
            name: Windows
-           path: /home/runner
            
-      - name: Move Android File
-        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.exe /home/runner/${{ env.PROJECT_NAME }}-Windows.exe
-
+      - name: zip Windows File
+        run: zip -r /home/runner/${{ env.PROJECT_NAME }}-release.zip /home/runner/${{ env.PROJECT_NAME }}-Windows.zip
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
            name: iOS
            path: ${{ github.workspace }}
+      - name: Move iOS File
+        run: mv ${{ github.workspace }}/${{ env.PROJECT_NAME }}.ipa /home/runner/${{ env.PROJECT_NAME }}.ipa
       - name: Download Mac Build
         uses: actions/download-artifact@main
         with:
            name: MacOS
-           path: ${{ github.workspace }}
       - name: Move Mac File
-        run: mv ${{ github.workspace }}/${{ env.PROJECT_NAME }}.app /home/runner/${{ env.PROJECT_NAME }}.app
+        run: zip -r ${{ github.workspace }}/${{ env.PROJECT_NAME }}.zip /home/runner/${{ env.PROJECT_NAME }}.zip
+      - name: Download Linux Build
+        uses: actions/download-artifact@main
+        with:
+           name: Linux
+      - name: zip Linux File
+        run: zip -r ${{ github.workspace }}/${{ env.PROJECT_NAME }}.zip /home/runner/${{ env.PROJECT_NAME }}.zip
 
-      - name: Move iOS File
-        run: mv ${{ github.workspace }}/${{ env.PROJECT_NAME }}.ipa /home/runner/${{ env.PROJECT_NAME }}.ipa
-
+      
       - name: Publish The Release
         uses: softprops/action-gh-release@v2
         with:
