@@ -5,7 +5,7 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/kittycathy233/lime"
+      "url": "https://github.com/AliAlafandy/lime"
     },
     {
       "name": "openfl",
@@ -16,8 +16,8 @@
       "name": "flixel",
       "type": "git",
       "dir": null,
-      "ref": "main",
-      "url": "https://github.com/kittycathy233/flixel"
+      "ref": "master",
+      "url": "https://github.com/AliAlafandy/flixel-alafandy"
     },
     {
       "name": "flixel-addons",
@@ -39,7 +39,7 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/kittycathy233/hxcpp"
+      "url": "https://github.com/AliAlafandy/hxcpp"
     },
     {
       "name": "hxvlc",
@@ -68,7 +68,7 @@
       "type": "git",
       "dir": null,
       "ref": "main",
-      "url": "https://github.com/kittycathy233/linc_luajit"
+      "url": "https://github.com/AliAlafandy/linc_luajit"
     },
     {
       "name": "flxanimate",
