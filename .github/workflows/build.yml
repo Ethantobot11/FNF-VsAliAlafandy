@@ -61,6 +61,18 @@ jobs:
             export/release/android/obj/
           restore-keys: |
             cache-build-android
+      - name: Restore existing build cache for faster compilation
+        if: inputs.name == 'Windows'
+        uses: actions/cache@v4
+        with:
+          # not caching the bin folder to prevent asset duplication and stuff like that
+          key: cache-build-windows
+          path: |
+            .haxelib/
+            export/release/windows/haxe/
+            export/release/windows/obj/
+          restore-keys: |
+            cache-build-windows
             
 
       - name: Install libVLC
@@ -111,6 +123,27 @@ jobs:
                 console.log("Cache cleared.")
               }
             }
+      - name: Clearing already existing cache
+        if: inputs.name == 'Windows'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const caches = await github.rest.actions.getActionsCacheList({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            for (const cache of caches.data.actions_caches) {
+              if (cache.key == "cache-build-Windows") {
+                console.log('Clearing ' + cache.key + '...')
+                await github.rest.actions.deleteActionsCacheById({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  cache_id: cache.id,
+                })
+                console.log("Cache cleared.")
+              }
+            }
+        
       - name: Uploading new cache
         if: inputs.name == 'Android'
         uses: actions/cache@v4
@@ -149,6 +182,18 @@ jobs:
           name: ${{ inputs.artifactName }}
           path: ${{ inputs.artifactPath }}
           if-no-files-found: error
+      - name: Uploading new cache
+        if: inputs.name == 'Android'
+        uses: actions/cache@v4
+        with:
+          # caching again since for some reason it doesnt work with the first post cache shit
+          key: cache-build-android
+          path: |
+            .haxelib/
+            export/release/windows/haxe/
+            export/release/windows/obj/
+          restore-keys: |
+            cache-build-Windows
       - name: Uploading new cache
         if: inputs.name == 'iOS'
         uses: actions/cache@v4
