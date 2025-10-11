@@ -24,15 +24,10 @@ jobs:
             buildArgs: "linux -final -D officialBuild"
             artifactName: Linux
             artifactPath: export/release/linux/bin/*
-          - name: macOS x86_64
-            os: macos-14
+          - name: macOS
+            os: macos-15
             buildArgs: "mac -final -D officialBuild"
             artifactName: MacOS-x86_64
-            artifactPath: export/release/macos/bin/*.app
-          - name: macOS AArch64
-            os: macos-15
-            buildArgs: mac
-            artifactName: MacOS
             artifactPath: export/release/macos/bin/*
           - name: Android
             os: macos-15
@@ -72,7 +67,8 @@ jobs:
            name: Windows
            
       - name: zip Windows File
-        run: zip -r /home/runner/Windows.zip /home/runner/-Windows.zip
+        run: zip -r Windows.zip Windows.zip
+        
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
@@ -80,18 +76,20 @@ jobs:
            path: ${{ github.workspace }}
       - name: Move iOS File
         run: mv ${{ github.workspace }}/${{ env.PROJECT_NAME }}.ipa /home/runner/${{ env.PROJECT_NAME }}.ipa
+        
       - name: Download Mac Build
         uses: actions/download-artifact@main
         with:
            name: MacOS
       - name: Move Mac File
-        run: zip -r ${{ github.workspace }}/MacOS.zip /home/runner/MacOS.zip
+        run: zip -r MacOS.zip MacOS.zip
+        
       - name: Download Linux Build
         uses: actions/download-artifact@main
         with:
            name: Linux
       - name: zip Linux File
-        run: zip -r ${{ github.workspace }}/Linux.zip /home/runner/Linux.zip
+        run: zip -r Linux.zip Linux.zip
 
       
       - name: Publish The Release
@@ -103,6 +101,6 @@ jobs:
           files: |
             /home/runner/*.apk
             /home/runner/*.ipa
-            /home/runner/Linux.zip
-            /home/runner/Windows.zip
-            /home/runner/MacOS.zip
+            Linux.zip
+            Windows.zip
+            MacOS.zip
