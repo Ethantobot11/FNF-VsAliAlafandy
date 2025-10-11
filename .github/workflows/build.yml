@@ -273,7 +273,7 @@ jobs:
         uses: actions/cache@v4
         with:
           # caching again since for some reason it doesnt work with the first post cache shit
-          key: cache-build-android
+          key: cache-build-linux
           path: |
             .haxelib/
             export/release/linux/haxe/
@@ -285,7 +285,7 @@ jobs:
         uses: actions/cache@v4
         with:
           # caching again since for some reason it doesnt work with the first post cache shit
-          key: cache-build-android
+          key: cache-build-linux
           path: |
             .haxelib/
             export/release/macos/haxe/
